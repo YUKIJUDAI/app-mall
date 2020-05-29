@@ -1,0 +1,90 @@
+$color: #e61e41;
+
+.category {
+    .advanced-screening-popup {
+        padding: 0.6rem;
+        color: #333;
+        input {
+            text-align: center;
+            border-radius: 4px;
+            width: 5rem;
+            height: 1.4rem;
+            padding: 0.4rem;
+            margin: 0 1rem;
+            background-color: #ccc;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .advanced-screening-btn {
+            text-align: center;
+            margin: 1rem 0 0.4rem 0;
+            .yes {
+                margin-right: 1rem;
+            }
+        }
+    }
+    .content {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 11.5vw;
+        bottom: 13.5vw;
+        display: flex;
+        .left {
+            flex: 0 0 5rem;
+            background: #f1f8ff;
+            overflow: auto;
+            ul {
+                position: relative;
+                li {
+                    padding: 0 5px;
+                    color: #666;
+                    height: 3rem;
+                    line-height: 3rem;
+                    text-align: center;
+                    box-sizing: border-box;
+                    font-size: 14px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    &.active {
+                        background: #fff;
+                    }
+                }
+                .sidebar-tag {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0.2rem;
+                    height: 3rem;
+                    background: $color;
+                    transition: top 0.3s ease-out;
+                }
+            }
+        }
+        .right {
+            flex: 1;
+            width: 0; // width为 0 可以保证元素宽度平分父元素宽度
+            display: flex;
+            flex-direction: column;
+            .scroll-wrapper {
+                position: relative;
+                flex: 1;
+                overflow: hidden;
+                .content-scroll {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                }
+                .no-data {
+                    margin-top: 30px;
+                    color: #bbb;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
