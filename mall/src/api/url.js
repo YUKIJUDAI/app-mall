@@ -10,6 +10,7 @@ export const Url = {
 
     registerApi: baseURL + '/member/reg', // 用户注册
     loginApi: baseURL + '/member/login', // 用户登录
+    loginApi2: baseURL + '/member/login_user', // 用户登录
     userInfoApi: baseURL + '/member/getMemberInfo', // 用户信息
     updateUserInfoApi: baseURL + '/member/editinfo', // 更新用户信息
     collectionListApi: baseURL + '/member/collectlist', // 用户收藏列表

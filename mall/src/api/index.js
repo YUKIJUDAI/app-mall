@@ -37,6 +37,10 @@ class Ajax {
         return post(Url.loginApi, data);
     }
 
+    login2(data) {
+        return post(Url.loginApi2, data);
+    }
+
     // 获取用户信息 | GET
     getUserInfo() {
         return get(Url.userInfoApi);

@@ -1,7 +1,6 @@
 <template>
     <div class="address-edit">
         <top-bar title="编辑地址" hasBack outAddressEdit v-on:outAddressEditEvt="outAddressEditEvt"></top-bar>
-
         <!-- Vant AddressEdit 地址编辑 -->
         <van-address-edit show-set-default show-search-result :area-list="areaList" :address-info="addressInfo" :show-delete="showDelete" :is-saving="isSaving" :is-deleting="isDeleting" @save="saveHandle" @delete="deleteHandle" />
     </div>
@@ -11,6 +10,7 @@
 import TopBar from '@/components/TopBar';
 import { GoodsMixin } from '@/mixins/goodsMixin';
 import ajax from '@/api';
+import { exit } from "@/utils/tools";
 
 export default {
     name: 'AddressEdit',
@@ -38,7 +38,7 @@ export default {
          */
         async saveHandle(content) {
             if (!this.userToken) {
-                this.$router.push({ name: 'Login' });
+                exit()
                 return;
             }
 

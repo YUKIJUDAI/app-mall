@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="login" v-show="showFlag">
         <!-- 登录 -->
         <transition name="login-slide">
             <article class="form-container" v-if="switchFlag === 1">
@@ -87,6 +87,7 @@ export default {
     components: { Back },
     data() {
         return {
+            showFlag: false,
             type: 1, // 用户: 1,商家：2
             switchFlag: 1, // 登录: 1, 注册: 2
             focusIndex: 0, // 输入框聚焦索引
@@ -104,6 +105,15 @@ export default {
     },
     created() {
         this.$nextTick(() => this._updatePicCode());
+        const username = this.$route.query.username;
+        const password = this.$route.query.password;
+        if (username && password) {
+            this.username = username;
+            this.password = password;
+            this.login2();
+        } else {
+            this.showFlag = true;
+        }
     },
     methods: {
         /**
@@ -164,8 +174,8 @@ export default {
         async login() {
             this.isLoading = true; // 按钮加载状态
             let { username, password, code_mark, code, type } = this.$data;
-            let login_username = username; 
-            let login_password = password; 
+            let login_username = username;
+            let login_password = password;
             try {
                 let res = await ajax.login({ login_username, login_password, code_mark, code, type });
                 // 反馈消息
@@ -178,6 +188,25 @@ export default {
                 (res.data) && this.setUserToken(res.data) && setTimeout(() => this.$router.back(), 1000);
             } catch (error) {
                 this.isLoading = false;
+                console.log(error);
+            }
+        },
+        /**
+         * 登录2
+         */
+        async login2() {
+            let { username, password } = this.$data;
+            let login_username = username;
+            let login_password = password;
+            try {
+                let res = await ajax.login2({ login_username, login_password });
+                // 反馈消息
+                if (res.code !== 0) {
+                    this.$toast(res.msg);
+                }
+                // 设置 token | 方法在 GoodsMixin
+                (res.data) && this.setUserToken(res.data) && setTimeout(() => this.$router.replace("/home"), 1000);
+            } catch (error) {
                 console.log(error);
             }
         },

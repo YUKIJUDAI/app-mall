@@ -12,7 +12,7 @@ module.exports = {
         // port: 8888, // 服务器临时部署端口
         proxy: {
             '/api': {
-                target: 'http://hao.lethink.net',
+                target: 'https://hxx.huomanhao.com',
                 pathRewrite: { '^/api': '' },
                 changeOrigin: true,
             }

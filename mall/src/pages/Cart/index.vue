@@ -10,7 +10,7 @@
                 </section>
                 <section class="desc">{{ userToken ? '您的购物车还是空空的哦' : '请先登录噢~~' }}</section>
                 <section class="go-shop" v-if="userToken" @click="$router.push({ name: 'Home' })">去购物</section>
-                <section class="login-btn" v-else @click="$router.push({ name: 'Login' })">去登录</section>
+                <section class="login-btn" v-else @click="exit()">去登录</section>
             </article>
 
             <!-- 购物车内容 -->
@@ -79,6 +79,7 @@
 import TopBar from '@/components/TopBar';
 import BScroll from '@/components/BScroll';
 import { GoodsMixin } from '@/mixins/goodsMixin';
+import { exit } from "@/utils/tools";
 import ajax from '@/api';
 
 export default {
@@ -106,7 +107,7 @@ export default {
             let totalPrice = 0;
             this.shopCartList.forEach(item => {
                 item.checked
-                    && (totalPrice += parseFloat((item.min_group_price * item.num/100).toFixed(2)));
+                    && (totalPrice += parseFloat((item.min_group_price * item.num / 100).toFixed(2)));
             });
             return totalPrice.toFixed(2);
         }
@@ -120,6 +121,9 @@ export default {
         this._checkShopCart();
     },
     methods: {
+        exit() {
+            exit()
+        },
         /**
          * 查询购物车数据
          */

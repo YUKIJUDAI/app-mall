@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from "qs";
 import store from '../store';
 import router from '../router';
+import { exit } from "@/utils/tools";
 import { locationCityCache } from '@/assets/js/cache';
 import { Toast } from 'vant';
 import { Dialog } from 'vant';
@@ -87,7 +88,7 @@ export function post(url, data = {}) {
                     if (res.data || !res.data.code) {
                         // 请求成功
 
-                        if (res.data.code > 4000 && res.data.code < 5100) router.push({ name: 'Login' });
+                        if (res.data.code > 4000 && res.data.code < 5100) exit();
                         else resolve(res.data);
                     } else {
                         // 请求错误

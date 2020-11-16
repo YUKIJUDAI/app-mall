@@ -4,7 +4,7 @@
         <!-- 头像 用户名 -->
         <section class="user-info" v-if="!userToken || !userInfo">
             <img class="avatar" src="~@/assets/imgs/admin.jpg" />
-            <p @click="$router.push({ name: 'Login' })">登录 / 注册</p>
+            <p @click="exit">登录 / 注册</p>
         </section>
         <section class="user-info" v-else>
             <img class="avatar" src="~@/assets/imgs/admin.jpg" />
@@ -65,6 +65,7 @@
 import TopBar from '@/components/TopBar';
 import UserInfo from './UserInfo';
 import { GoodsMixin } from '@/mixins/goodsMixin';
+import { exit } from "@/utils/tools";
 import ajax from '@/api';
 
 export default {
@@ -82,7 +83,7 @@ export default {
                 { icon: "like-o", status: 4, title: "已完成" },
                 { icon: "phone-o", status: 5, title: "售后" }
             ],
-            userInfo: null, // 用户信息
+            userInfo: {}, // 用户信息
             orderNum: [], // 订单对应处理数量
             isShowSetting: false // 是否显示用户设置
         }
@@ -93,10 +94,13 @@ export default {
         }
     },
     created() {
-        this._getUserInfo();
+        this.userToken && this._getUserInfo();
         // this._getOrderNum();
     },
     methods: {
+        exit() {
+            exit();
+        },
         /**
          * 获取用户信息
          */
@@ -141,7 +145,8 @@ export default {
             })
                 .then(() => {
                     // 删除本地用户 token && 刷新组件
-                    (this.userToken) && (this.deleteUserToken()) && this.reload();
+                    (this.userToken) && (this.deleteUserToken());
+                    exit();
                 })
                 .catch(error => null);
         }

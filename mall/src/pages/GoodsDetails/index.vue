@@ -117,6 +117,7 @@ import Back from '@/components/Back';
 import BScroll from '@/components/BScroll';
 import { ImagePreview } from 'vant'; // 图片预览
 import { GoodsMixin } from '@/mixins/goodsMixin';
+import { exit } from "@/utils/tools";
 import ajax from '@/api';
 
 export default {
@@ -190,7 +191,7 @@ export default {
          */
         async collectionHandle() {
             if (!this.userToken) {
-                this.$router.push({ name: 'Login' });
+                exit();
                 return;
             }
             let isCollection = this.isCollection;
@@ -213,7 +214,7 @@ export default {
          */
         async addToShopCart() {
             if (!this.userToken) {
-                this.$router.push({ name: 'Login' });
+                exit();
                 return;
             }
             this.setShoppingCartList(Object.assign(this.goodsInfo, { num: 1 }));
@@ -228,7 +229,7 @@ export default {
          */
         nowBuy() {
             if (!this.userToken) {
-                this.$router.push({ name: 'Login' });
+                exit();
                 return;
             }
             // 整合数据

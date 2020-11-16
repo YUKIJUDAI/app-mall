@@ -25,6 +25,7 @@
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
 import { GoodsMixin } from '@/mixins/goodsMixin';
+import { exit } from "@/utils/tools";
 import ajax from '@/api';
 
 export default {
@@ -52,7 +53,7 @@ export default {
          */
         async addToShopCart(goodsId) {
             if (!this.userToken) {
-                this.$router.push({ name: 'Login' });
+                exit();
                 return;
             }
             if (!goodsId) return;
