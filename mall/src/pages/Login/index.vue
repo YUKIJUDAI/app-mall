@@ -104,16 +104,18 @@ export default {
         }
     },
     created() {
-        this.$nextTick(() => this._updatePicCode());
         const username = this.$route.query.username;
         const password = this.$route.query.password;
-        if (username && password) {
+        if (window.AndroidJs && window.AndroidJs.getToken2()) {
+            this.setUserToken(window.AndroidJs.getToken2()) && setTimeout(() => this.$router.replace("/home"), 1000);
+        } else if (username && password) {
             this.username = username;
             this.password = password;
             this.login2();
         } else {
             this.showFlag = true;
         }
+        this.$nextTick(() => this._updatePicCode());
     },
     methods: {
         /**

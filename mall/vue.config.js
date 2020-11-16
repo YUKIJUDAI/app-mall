@@ -13,7 +13,7 @@ module.exports = {
         proxy: {
             '/api': {
                 target: 'https://hxx.huomanhao.com',
-                pathRewrite: { '^/api': '' },
+                pathRewrite: { '^/api': '/api' },
                 changeOrigin: true,
             }
         }
