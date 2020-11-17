@@ -12,8 +12,8 @@
             <section class="right-txt" @click="goGoodsDetails(item.goods_id)">
                 <p class="goods-name" v-html="keyWordLight(item.goods_name, searchKeyword)"></p>
                 <p class="goods-num">
-                    <span class="price" v-if="isOrderPaymentList">￥{{ (item.min_group_price * item.num/100).toFixed(2) }}</span>
-                    <span class="price" v-else>￥{{ item.min_group_price/100 }}</span>
+                    <span class="price" v-if="isOrderPaymentList"><span>到手价￥</span>{{ (item.min_group_price * item.num/100).toFixed(2) }}</span>
+                    <span class="price" v-else><span>到手价￥</span>{{ item.min_group_price/100 }}</span>
                 </p>
             </section>
             <!-- 单个商品订单数量 -->

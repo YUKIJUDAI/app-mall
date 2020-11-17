@@ -187,7 +187,7 @@ export default {
                 }
 
                 // 设置 token | 方法在 GoodsMixin
-                (res.data) && this.setUserToken(res.data) && setTimeout(() => this.$router.back(), 1000);
+                (res.data) && this.setUserToken(res.data.token) && setTimeout(() => this.$router.back(), 1000);
             } catch (error) {
                 this.isLoading = false;
                 console.log(error);
@@ -207,7 +207,7 @@ export default {
                     this.$toast(res.msg);
                 }
                 // 设置 token | 方法在 GoodsMixin
-                (res.data) && this.setUserToken(res.data) && setTimeout(() => this.$router.replace("/home"), 1000);
+                (res.data) && this.setUserToken(res.data.token) && setTimeout(() => this.$router.replace("/home"), 1000);
             } catch (error) {
                 console.log(error);
             }

@@ -52,6 +52,12 @@
       justify-content: space-around;
       align-items: center;
       color: #7d7e80;
+      i {
+          font-size: 1.4rem;
+      }
+      div {
+          font-size: 0.8rem;
+      }
     }
     .active { color: $color; }
   }

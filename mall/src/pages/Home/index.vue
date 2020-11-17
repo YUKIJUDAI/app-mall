@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div class="logo">
-            <img src="@/assets/imgs/logo.png" alt="">
-        </div>
         <!-- 顶部搜素 -->
         <header class="header">
             <section class="search-box">

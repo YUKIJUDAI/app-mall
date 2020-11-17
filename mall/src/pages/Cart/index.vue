@@ -8,7 +8,7 @@
                 <section class="cart-wrapper">
                     <img class="cart-img" :src="cartImg" />
                 </section>
-                <section class="desc">{{ userToken ? '您的购物车还是空空的哦' : '请先登录噢~~' }}</section>
+                <section class="desc">{{ userToken ? '购物车快饿扁了/(ㄒoㄒ)/~~' : '请先登录噢~~' }}</section>
                 <section class="go-shop" v-if="userToken" @click="$router.push({ name: 'Home' })">去购物</section>
                 <section class="login-btn" v-else @click="exit()">去登录</section>
             </article>

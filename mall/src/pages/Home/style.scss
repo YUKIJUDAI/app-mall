@@ -26,7 +26,7 @@
 .header {
     height: 11.5vw;
     line-height: 11.5vw;
-    background: #eee;
+    background: #f8f8f8;
     display: flex;
     // position: relative;
     // z-index: 10;
@@ -80,7 +80,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    top: calc(11.5vw + 5.5rem);
+    top: 11.5vw;
     bottom: 13.5vw;
     .content-scroll {
         height: 100%;
